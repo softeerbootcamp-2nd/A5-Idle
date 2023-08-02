@@ -36,4 +36,3 @@ out/
 ### VS Code ###
 .vscode/
 /.gradle/
-/.idea/
