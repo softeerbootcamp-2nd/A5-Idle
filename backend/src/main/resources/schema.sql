@@ -1,284 +1,230 @@
-CREATE TABLE `CAR_MASTER` (
-                              `car_master_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                              `name`	varchar(10)	NULL,
-                              `phone_number`	varchar(11)	NULL,
-                              `dealership`	varchar(20)	NULL,
-                              `description`	text	NULL,
-                              `sales_rate`	int	NULL,
-                              `img_url`	text	NULL,
-                              `latitude`	double	NULL,
-                              `longitude`	double	NULL
+create table if not exists  CAR_MASTER
+(
+    car_master_id bigint auto_increment
+        primary key,
+    name          varchar(10) null,
+    phone_number  varchar(11) null,
+    dealership    varchar(20) null,
+    description   text        null,
+    sales_rate    int         null,
+    img_url       text        null,
+    latitude      double      null,
+    longitude     double      null
 );
 
-CREATE TABLE `CAR_TYPE` (
-                            `car_type_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                            `name`	varchar(10)	NULL
+create table if not exists  CAR_TYPE
+(
+    car_type_id bigint auto_increment
+        primary key,
+    name        varchar(10) null
 );
 
-CREATE TABLE `TRIM` (
-                        `trim_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                        `name`	varchar(20)	NULL,
-                        `price`	int	NULL,
-                        `img_url`	text	NULL,
-                        `description`	text	NULL,
-                        `purchase_rate`	varchar(20)	NULL,
-                        `car_type_id`	bigint NULL
+create table if not exists  TRIM
+(
+    trim_id       bigint auto_increment
+        primary key,
+    name          varchar(20) null,
+    price         int         null,
+    img_url       text        null,
+    description   text        null,
+    purchase_rate varchar(20) null,
+    car_type_id   bigint      null,
+    constraint FK_CAR_TYPE_TO_TRIM_1
+        foreign key (car_type_id) references CAR_TYPE (car_type_id)
 );
 
-CREATE TABLE `ENGINE` (
-                          `engine_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                          `name`	varchar(30)	NULL,
-                          `img_url`	text	NULL,
-                          `price`	int	NULL,
-                          `peak_output`	int	NULL,
-                          `max_torque`	double	NULL,
-                          `min_fuel`	double	NULL,
-                          `max_fuel`	double	NULL,
-                          `purchase_rate`	varchar(20)	NULL,
-                          `description`	text	NULL
+create table if not exists  ENGINE
+(
+    engine_id     bigint auto_increment
+        primary key,
+    name          varchar(30) null,
+    img_url       text        null,
+    price         int         null,
+    peak_output   int         null,
+    max_torque    double      null,
+    min_fuel      double      null,
+    max_fuel      double      null,
+    purchase_rate varchar(20) null,
+    description   text        null
 );
 
-CREATE TABLE `TRIM_ENGINE` (
-                               `trim_engine_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                               `trim_id`	bigint	NULL,
-                               `engine_id`	bigint	NULL
+create table if not exists  TRIM_ENGINE
+(
+    trim_engine_id bigint auto_increment
+        primary key,
+    trim_id        bigint null,
+    engine_id      bigint null,
+    constraint FK_ENGINE_TO_TRIM_ENGINE_1
+        foreign key (engine_id) references ENGINE (engine_id),
+    constraint FK_TRIM_TO_TRIM_ENGINE_1
+        foreign key (trim_id) references TRIM (trim_id)
 );
 
-CREATE TABLE `DRIVING_METHOD` (
-                                  `driving_method_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                  `name`	varchar(10)	NULL,
-                                  `price`	int	NULL,
-                                  `description`	text	NULL,
-                                  `img_url`	text	NULL,
-                                  `purchase_rate`	varchar(20)	NULL
-);
-
-CREATE TABLE `TRIM_DRIVING_METHOD` (
-                                       `trim_driving_mehtod_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                       `trim_id`	bigint	NULL,
-                                       `driving_method_id`	bigint NULL
-);
-
-CREATE TABLE `BODY_TYPE` (
-                             `body_type_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                             `name`	varchar(10)	NULL,
-                             `price`	int	NULL,
-                             `description`	text	NULL,
-                             `purchase_rate`	varchar(20)	NULL,
-                             `img_url`	text	NULL
-);
-
-CREATE TABLE `TRIM_BODY_TYPE` (
-                                  `trim_body_type_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                  `trim_id`	bigint	NULL,
-                                  `body_type_id`	bigint	NULL
-);
-
-CREATE TABLE `EXTERIOR_COLOR` (
-                                  `exterior_color_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                  `color`	varchar(20)	NULL,
-                                  `color_img_url`	text	NULL,
-                                  `price`	int	NULL,
-                                  `purchase_rate`	varchar(20)	NULL
-);
-
-CREATE TABLE `CAR_EXTERIOR_IMAGE` (
-                                      `car_exterior_img_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                      `car_exterior_img_url`	text	NULL,
-                                      `exterior_color_id`	bigint	NULL,
-                                      `img_sequence`	int	NULL
-);
-
-CREATE TABLE `INTERIOR_COLOR` (
-                                  `interior_color_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                  `color`	varchar(20)	NULL,
-                                  `price`	int	NULL,
-                                  `interior_img_url`	text	NULL,
-                                  `color_img_url`	text	NULL,
-                                  `purchase_rate`	varchar(20)	NULL,
-                                  `trim_exterior_color_id`	bigint	NULL
-);
-
-CREATE TABLE `OPTION` (
-                          `option_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                          `name`	varchar(30)	NULL,
-                          `price`	int	NULL,
-                          `description`	text	NULL,
-                          `purchase_rate`	varchar(20)	NULL,
-                          `option_category_id`	bigint	NULL
-);
-
-CREATE TABLE `FUNCTIONS` (
-                            `functions_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                            `name`	varchar(100)	NULL,
-                            `description`	text	NULL,
-                            `img_url`	text	NULL,
-                            `option_id`	bigint	NULL,
-                            `is_my_trim`	varchar(5)	NULL,
-                            `function_category_id`	bigint	NULL,
-                            `wheel_logo_img_url`	text	NULL
-);
-
-CREATE TABLE `TRIM_FUNCTION` (
-                                 `trim_function_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                 `is_default`	varchar(5)	NULL,
-                                 `functions_id`	bigint	NULL,
-                                 `trim_id`	bigint	NULL
-);
-
-CREATE TABLE `OPTION_CATEGORY` (
-                                   `option_category_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                   `name`	varchar(20)	NULL
-);
-
-CREATE TABLE `TRIM_EXTERIOR_COLOR` (
-                                       `trim_exterior_color_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                       `trim_id`	bigint	NULL,
-                                       `exterior_color_id`	bigint	NULL
-);
-
-CREATE TABLE `OPTION_STATUS` (
-                                 `option_status_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                 `selected_option_id`	bigint	NULL,
-                                 `not_activated_option_id`	bigint	NULL,
-                                 `selected_engine_id`	bigint	NULL
-);
-
-CREATE TABLE `FUNCTION_CATEGORY` (
-                                     `function_category_id`	bigint AUTO_INCREMENT PRIMARY KEY 	NOT NULL,
-                                     `name`	varchar(20)	NULL
+create table if not exists  DRIVING_METHOD
+(
+    driving_method_id bigint auto_increment
+        primary key,
+    name              varchar(10) null,
+    price             int         null,
+    description       text        null,
+    img_url           text        null,
+    purchase_rate     varchar(20) null
 );
 
 
-ALTER TABLE `TRIM` ADD CONSTRAINT `FK_CAR_TYPE_TO_TRIM_1` FOREIGN KEY (
-                                                                       `car_type_id`
-    )
-    REFERENCES `CAR_TYPE` (
-                           `car_type_id`
-        );
+create table if not exists  TRIM_DRIVING_METHOD
+(
+    trim_driving_method_id bigint auto_increment
+        primary key,
+    trim_id                bigint null,
+    driving_method_id      bigint null,
+    constraint FK_DRIVING_METHOD_TO_TRIM_DRIVING_METHOD_1
+        foreign key (driving_method_id) references DRIVING_METHOD (driving_method_id),
+    constraint FK_TRIM_TO_TRIM_DRIVING_METHOD_1
+        foreign key (trim_id) references TRIM (trim_id)
+);
 
-ALTER TABLE `TRIM_ENGINE` ADD CONSTRAINT `FK_TRIM_TO_TRIM_ENGINE_1` FOREIGN KEY (
-                                                                                 `trim_id`
-    )
-    REFERENCES `TRIM` (
-                       `trim_id`
-        );
 
-ALTER TABLE `TRIM_ENGINE` ADD CONSTRAINT `FK_ENGINE_TO_TRIM_ENGINE_1` FOREIGN KEY (
-                                                                                   `engine_id`
-    )
-    REFERENCES `ENGINE` (
-                         `engine_id`
-        );
+create table if not exists  BODY_TYPE
+(
+    body_type_id  bigint auto_increment
+        primary key,
+    name          varchar(10) null,
+    price         int         null,
+    description   text        null,
+    purchase_rate varchar(20) null,
+    img_url       text        null
+);
 
-ALTER TABLE `TRIM_DRIVING_METHOD` ADD CONSTRAINT `FK_TRIM_TO_TRIM_DRIVING_METHOD_1` FOREIGN KEY (
-                                                                                                 `trim_id`
-    )
-    REFERENCES `TRIM` (
-                       `trim_id`
-        );
 
-ALTER TABLE `TRIM_DRIVING_METHOD` ADD CONSTRAINT `FK_DRIVING_METHOD_TO_TRIM_DRIVING_METHOD_1` FOREIGN KEY (
-                                                                                                           `driving_method_id`
-    )
-    REFERENCES `DRIVING_METHOD` (
-                                 `driving_method_id`
-        );
+create table if not exists  TRIM_BODY_TYPE
+(
+    trim_body_type_id bigint auto_increment
+        primary key,
+    trim_id           bigint null,
+    body_type_id      bigint null,
+    constraint FK_BODY_TYPE_TO_TRIM_BODY_TYPE_1
+        foreign key (body_type_id) references BODY_TYPE (body_type_id),
+    constraint FK_TRIM_TO_TRIM_BODY_TYPE_1
+        foreign key (trim_id) references TRIM (trim_id)
+);
 
-ALTER TABLE `TRIM_BODY_TYPE` ADD CONSTRAINT `FK_TRIM_TO_TRIM_BODY_TYPE_1` FOREIGN KEY (
-                                                                                       `trim_id`
-    )
-    REFERENCES `TRIM` (
-                       `trim_id`
-        );
+create table if not exists  EXTERIOR_COLOR
+(
+    exterior_color_id bigint auto_increment
+        primary key,
+    color             varchar(20) null,
+    color_img_url     text        null,
+    price             int         null,
+    purchase_rate     varchar(20) null
+);
 
-ALTER TABLE `TRIM_BODY_TYPE` ADD CONSTRAINT `FK_BODY_TYPE_TO_TRIM_BODY_TYPE_1` FOREIGN KEY (
-                                                                                            `body_type_id`
-    )
-    REFERENCES `BODY_TYPE` (
-                            `body_type_id`
-        );
+create table if not exists  CAR_EXTERIOR_IMAGE
+(
+    car_exterior_img_id  bigint auto_increment
+        primary key,
+    car_exterior_img_url text   null,
+    exterior_color_id    bigint null,
+    img_sequence         int    null,
+    constraint FK_EXTERIOR_COLOR_TO_CAR_EXTERIOR_IMAGE_1
+        foreign key (exterior_color_id) references EXTERIOR_COLOR (exterior_color_id)
+);
 
-ALTER TABLE `CAR_EXTERIOR_IMAGE` ADD CONSTRAINT `FK_EXTERIOR_COLOR_TO_CAR_EXTERIOR_IMAGE_1` FOREIGN KEY (
-                                                                                                         `exterior_color_id`
-    )
-    REFERENCES `EXTERIOR_COLOR` (
-                                 `exterior_color_id`
-        );
+create table if not exists  TRIM_EXTERIOR_COLOR
+(
+    trim_exterior_color_id bigint auto_increment
+        primary key,
+    trim_id                bigint null,
+    exterior_color_id      bigint null,
+    constraint FK_EXTERIOR_COLOR_TO_TRIM_EXTERIOR_COLOR_1
+        foreign key (exterior_color_id) references EXTERIOR_COLOR (exterior_color_id),
+    constraint FK_TRIM_TO_TRIM_EXTERIOR_COLOR_1
+        foreign key (trim_id) references TRIM (trim_id)
+);
 
-ALTER TABLE `INTERIOR_COLOR` ADD CONSTRAINT `FK_TRIM_EXTERIOR_COLOR_TO_INTERIOR_COLOR_1` FOREIGN KEY (
-                                                                                                      `trim_exterior_color_id`
-    )
-    REFERENCES `TRIM_EXTERIOR_COLOR` (
-                                      `trim_exterior_color_id`
-        );
+create table if not exists  INTERIOR_COLOR
+(
+    interior_color_id      bigint auto_increment
+        primary key,
+    color                  varchar(20) null,
+    price                  int         null,
+    interior_img_url       text        null,
+    color_img_url          text        null,
+    purchase_rate          varchar(20) null,
+    trim_exterior_color_id bigint      null,
+    constraint FK_TRIM_EXTERIOR_COLOR_TO_INTERIOR_COLOR_1
+        foreign key (trim_exterior_color_id) references TRIM_EXTERIOR_COLOR (trim_exterior_color_id)
+);
 
-ALTER TABLE `OPTION` ADD CONSTRAINT `FK_OPTION_CATEGORY_TO_OPTION_1` FOREIGN KEY (
-                                                                                  `option_category_id`
-    )
-    REFERENCES `OPTION_CATEGORY` (
-                                  `option_category_id`
-        );
+create table if not exists  OPTION_CATEGORY
+(
+    option_category_id bigint auto_increment
+        primary key,
+    name               varchar(20) null
+);
 
-ALTER TABLE `FUNCTIONS` ADD CONSTRAINT `FK_OPTION_TO_FUNCTION_1` FOREIGN KEY (
-                                                                             `option_id`
-    )
-    REFERENCES `OPTION` (
-                         `option_id`
-        );
+create table if not exists  `OPTION`
+(
+    option_id          bigint auto_increment
+        primary key,
+    name               varchar(30) null,
+    price              int         null,
+    description        text        null,
+    purchase_rate      varchar(20) null,
+    option_category_id bigint      null,
+    constraint FK_OPTION_CATEGORY_TO_OPTION_1
+        foreign key (option_category_id) references OPTION_CATEGORY (option_category_id)
+);
 
-ALTER TABLE `FUNCTIONS` ADD CONSTRAINT `FK_FUNCTION_CATEGORY_TO_FUNCTION_1` FOREIGN KEY (
-                                                                                        `function_category_id`
-    )
-    REFERENCES `FUNCTION_CATEGORY` (
-                                    `function_category_id`
-        );
+create table if not exists  FUNCTION_CATEGORY
+(
+    function_category_id bigint auto_increment
+        primary key,
+    name                 varchar(20) null
+);
 
-ALTER TABLE `TRIM_FUNCTION` ADD CONSTRAINT `FK_FUNCTION_TO_TRIM_FUNCTION_1` FOREIGN KEY (
-                                                                                         `functions_id`
-    )
-    REFERENCES `FUNCTIONS` (
-                           `functions_id`
-        );
+create table if not exists  FUNCTIONS
+(
+    function_id          bigint auto_increment
+        primary key,
+    name                 varchar(100) null,
+    description          text         null,
+    img_url              text         null,
+    option_id            bigint       null,
+    is_my_trim           varchar(5)   null,
+    function_category_id bigint       null,
+    wheel_logo_img_url   text         null,
+    constraint FK_FUNCTION_CATEGORY_TO_FUNCTION_1
+        foreign key (function_category_id) references FUNCTION_CATEGORY (function_category_id),
+    constraint FK_OPTION_TO_FUNCTION_1
+        foreign key (option_id) references `OPTION` (option_id)
+);
 
-ALTER TABLE `TRIM_FUNCTION` ADD CONSTRAINT `FK_TRIM_TO_TRIM_FUNCTION_1` FOREIGN KEY (
-                                                                                     `trim_id`
-    )
-    REFERENCES `TRIM` (
-                       `trim_id`
-        );
+create table if not exists  TRIM_FUNCTION
+(
+    trim_function_id bigint auto_increment
+        primary key,
+    is_default       varchar(5) null,
+    function_id      bigint     null,
+    trim_id          bigint     null,
+    constraint FK_FUNCTION_TO_TRIM_FUNCTION_1
+        foreign key (function_id) references FUNCTIONS (function_id),
+    constraint FK_TRIM_TO_TRIM_FUNCTION_1
+        foreign key (trim_id) references TRIM (trim_id)
+);
 
-ALTER TABLE `TRIM_EXTERIOR_COLOR` ADD CONSTRAINT `FK_TRIM_TO_TRIM_EXTERIOR_COLOR_1` FOREIGN KEY (
-                                                                                                 `trim_id`
-    )
-    REFERENCES `TRIM` (
-                       `trim_id`
-        );
+create table if not exists  OPTION_STATUS
+(
+    option_status_id        bigint auto_increment
+        primary key,
+    selected_option_id      bigint null,
+    not_activated_option_id bigint null,
+    selected_engine_id      bigint null,
+    constraint FK_ENGINE_TO_OPTION_STATUS_1
+        foreign key (selected_engine_id) references ENGINE (engine_id),
+    constraint FK_OPTION_TO_OPTION_STATUS_1
+        foreign key (selected_option_id) references `OPTION` (option_id),
+    constraint FK_OPTION_TO_OPTION_STATUS_2
+        foreign key (not_activated_option_id) references `OPTION` (option_id)
+);
 
-ALTER TABLE `TRIM_EXTERIOR_COLOR` ADD CONSTRAINT `FK_EXTERIOR_COLOR_TO_TRIM_EXTERIOR_COLOR_1` FOREIGN KEY (
-                                                                                                           `exterior_color_id`
-    )
-    REFERENCES `EXTERIOR_COLOR` (
-                                 `exterior_color_id`
-        );
-
-ALTER TABLE `OPTION_STATUS` ADD CONSTRAINT `FK_OPTION_TO_OPTION_STATUS_1` FOREIGN KEY (
-                                                                                       `selected_option_id`
-    )
-    REFERENCES `OPTION` (
-                         `option_id`
-        );
-
-ALTER TABLE `OPTION_STATUS` ADD CONSTRAINT `FK_OPTION_TO_OPTION_STATUS_2` FOREIGN KEY (
-                                                                                       `not_activated_option_id`
-    )
-    REFERENCES `OPTION` (
-                         `option_id`
-        );
-
-ALTER TABLE `OPTION_STATUS` ADD CONSTRAINT `FK_ENGINE_TO_OPTION_STATUS_1` FOREIGN KEY (
-                                                                                       `selected_engine_id`
-    )
-    REFERENCES `ENGINE` (
-                         `engine_id`
-        );
