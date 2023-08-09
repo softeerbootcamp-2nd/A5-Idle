@@ -36,3 +36,4 @@ out/
 ### VS Code ###
 .vscode/
 /.gradle/
+/src/main/resources/application-secret.yml

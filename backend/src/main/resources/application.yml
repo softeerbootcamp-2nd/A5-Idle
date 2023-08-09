@@ -1,1 +1,33 @@
-
+spring:
+  profiles:
+    active: dev
+    include: secret
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core: debug
+          datasource:
+            init:
+              ScriptUtils: debug
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${EC2_MYSQL_URL}
+    username: ${EC2_MYSQL_USERNAME}
+    password: ${EC2_MYSQL_PASSWORD}
