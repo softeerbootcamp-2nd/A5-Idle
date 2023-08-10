@@ -9,10 +9,7 @@ import com.autoever.idle.domain.category.functionCategory.dto.FunctionCategoryDt
 import com.autoever.idle.domain.function.dto.DefaultFunctionResDto;
 import com.autoever.idle.domain.trim.dto.TrimDto;
 import com.autoever.idle.domain.trim.dto.TrimSelectionResDto;
-<<<<<<< HEAD
 import com.autoever.idle.global.exception.custom.InvalidCarException;
-=======
->>>>>>> e24e6a4 ([fix] application.yml 충돌 수정)
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
