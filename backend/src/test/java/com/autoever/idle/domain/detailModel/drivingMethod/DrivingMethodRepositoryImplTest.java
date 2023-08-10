@@ -10,6 +10,7 @@ import java.util.List;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 @SpringBootTest
+@DisplayName("DrivingMethod Repository Test")
 class DrivingMethodRepositoryImplTest {
 
     @Autowired

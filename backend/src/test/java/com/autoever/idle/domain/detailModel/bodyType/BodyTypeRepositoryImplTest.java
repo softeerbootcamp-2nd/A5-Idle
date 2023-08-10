@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 @SpringBootTest
-@DisplayName("BodyTypeRepository Test")
+@DisplayName("BodyType Repository Test")
 class BodyTypeRepositoryImplTest {
 
     @Autowired

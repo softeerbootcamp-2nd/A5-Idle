@@ -10,6 +10,7 @@ import java.util.List;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 @SpringBootTest
+@DisplayName("Engine Repository Test")
 class EngineRepositoryImplTest {
 
     @Autowired
