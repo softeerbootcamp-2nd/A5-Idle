@@ -4,7 +4,14 @@ import com.autoever.idle.domain.detailModel.bodyType.BodyTypeRepository;
 import com.autoever.idle.domain.detailModel.drivingMethod.DrivingMethodRepository;
 import com.autoever.idle.domain.detailModel.dto.DetailModelResDto;
 import com.autoever.idle.domain.detailModel.engine.EngineRepository;
+import com.autoever.idle.global.exception.ErrorCode;
+import com.autoever.idle.global.exception.custom.InvalidDetailModelException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+import static com.autoever.idle.global.exception.ErrorCode.INVALID_DETAIL_MODEL;
 
 @Service
 public class DetailModelService {
@@ -22,8 +29,18 @@ public class DetailModelService {
     }
 
     public DetailModelResDto findAllModels(Long trimId) {
-        return DetailModelResDto.create(engineRepository.findAll(trimId),
+        DetailModelResDto detailModelResDto = DetailModelResDto.create(engineRepository.findAll(trimId),
                 drivingMethodRepository.findAll(trimId),
                 bodyTypeRepository.findAll(trimId));
+
+        validateDetailModels(detailModelResDto);
+        return detailModelResDto;
+    }
+
+    private void validateDetailModels(DetailModelResDto detailModelResDto) {
+        if (Stream.of(detailModelResDto.getEngines(), detailModelResDto.getDrivingMethods(), detailModelResDto.getBodyTypes())
+                .anyMatch(List::isEmpty)) {
+            throw new InvalidDetailModelException(INVALID_DETAIL_MODEL);
+        }
     }
 }
