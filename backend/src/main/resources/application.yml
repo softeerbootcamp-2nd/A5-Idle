@@ -31,3 +31,4 @@ spring:
     url: ${EC2_MYSQL_URL}
     username: ${EC2_MYSQL_USERNAME}
     password: ${EC2_MYSQL_PASSWORD}
+
