@@ -1,7 +1,7 @@
 package com.autoever.idle.domain.detailModel.engine;
 
 public class Engine {
-    private Long id;
+    private Long engineId;
     private String type;
     private int price;
     private String description;
