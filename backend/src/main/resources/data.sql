@@ -5,8 +5,8 @@ INSERT INTO TRIM (name, price, img_url, description, purchase_rate, car_type_id)
 INSERT INTO TRIM (name, price, img_url, description, purchase_rate, car_type_id) VALUES ('Prestige', 46240000, 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/prestige.png', '실용적이고 기본적인 기능을 갖춘 베이직 트림', '구매자 15%가 선택', 1);
 INSERT INTO TRIM (name, price, img_url, description, purchase_rate, car_type_id) VALUES ('Calligraphy', 51060000, 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/calligraphy.png', '실용적이고 기본적인 기능을 갖춘 베이직 트림', '구매자 75%가 선택', 1);
 
-INSERT INTO CAR_MASTER (name, phone_number, dealership, description, sales_rate, img_url, latitude, longitude) VALUES ('김팰리', '010-0000-00', '왕십리 지점', '고객님의 모든 구매 과정에 정성을 다하겠습니다.', 30, null, 36.1234, 126.1234);
-INSERT INTO CAR_MASTER (name, phone_number, dealership, description, sales_rate, img_url, latitude, longitude) VALUES ('정현대', '010-0000-00', '한양 대리점', '안녕하세요 믿음을 주는 카마스터 정현대입니다.', 20, null, 36.1324, 126.1324);
+INSERT INTO CAR_MASTER (name, phone_number, dealership, description, sales_rate, img_url, latitude, longitude) VALUES ('김팰리', '010-0000-00', '왕십리 지점', '고객님의 모든 구매 과정에 정성을 다하겠습니다.', 30, null, 37.56462664999, 127.02878456999);
+INSERT INTO CAR_MASTER (name, phone_number, dealership, description, sales_rate, img_url, latitude, longitude) VALUES ('정현대', '010-0000-00', '한양 대리점', '안녕하세요 믿음을 주는 카마스터 정현대입니다.', 20, null, 37.56462664995, 127.02878456872);
 INSERT INTO CAR_MASTER (name, phone_number, dealership, description, sales_rate, img_url, latitude, longitude) VALUES ('심포니', '010-0000-00', '마장 대리점', '고객님을 위한 최고의 차량을 추천해드릴게요.', 10, null, 36.1423, 126.1432);
 
 INSERT INTO EXTERIOR_COLOR (color, color_img_url, price, purchase_rate) VALUES ('어비스 블랙 펄', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/11.png', 0, '구매자의 30%가 선택');
