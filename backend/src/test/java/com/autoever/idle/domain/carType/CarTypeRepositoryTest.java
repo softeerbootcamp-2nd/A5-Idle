@@ -1,6 +1,7 @@
 package com.autoever.idle.domain.carType;
 
-import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,15 @@ import java.util.List;
 @DisplayName("CarType Repository Test")
 class CarTypeRepositoryTest {
 
+    SoftAssertions softAssertions;
+
     @Autowired
     CarTypeRepository carTypeRepository;
+
+    @BeforeEach
+    void beforeEach() {
+        softAssertions = new SoftAssertions();
+    }
 
     @Test
     @DisplayName("차종 이름으로 차종의 id를 찾는다")
@@ -22,7 +30,7 @@ class CarTypeRepositoryTest {
 
         List<Long> carTypeIds = carTypeRepository.findByName(carTypeName);
 
-        Assertions.assertThat(carTypeIds.size()).isEqualTo(1L);
+        softAssertions.assertThat(carTypeIds.size()).isEqualTo(1L);
     }
 
 }
