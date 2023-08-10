@@ -627,7 +627,7 @@ INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, funct
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('전동식 파킹 브레이크(오토홀드 포함)', '버튼 조작만으로 파킹 브레이크 작동 또는 해제가 가능하며, 정차 시 자동으로 제동상태를 유지하는 오토 홀드 기능 적용으로 편의성을 높였습니다.', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/43.jpg', null, 'FALSE', 7, null);
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('패들 쉬프트', '운전 중 간단한 조작만으로도 스포티한 수동 변속모드를 지원합니다.', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/74.jpg', null, 'FALSE', 7, null);
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('3존 독립제어 풀오토 에어컨(공기청정모드 포함)', '원하는 온도를 설정하면 자동으로 설정된 온도로 풍량을 조절하여 쾌적한 실내를 완성합니다.
-- 공기 청정 모드 : 일정 시간 동안 외부 공기를 차단하고 내부 순환모드를 가동하여 실내에서 순환하는 공기를 반복적으로 필터링하여 공기질을 개선시키는 기능입니다. 
+- 공기 청정 모드 : 일정 시간 동안 외부 공기를 차단하고 내부 순환모드를 가동하여 실내에서 순환하는 공기를 반복적으로 필터링하여 공기질을 개선시키는 기능입니다.
 - 3존 독립제어 : 운전석이나 동승석 뿐만 아니라 후석에서도 개별 제어가 가능한 에어컨입니다.', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/75.jpg', null, 'FALSE', 7, null);
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('공기질 센서', '실내 공기질을 실시간으로 확인할 수 있어 공기 청정 모드 사용이나 환기를 유도합니다.', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/76.jpg', null, 'FALSE', 7, null);
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('마이크로 에어 필터', '미세먼지의 실내 유입의 방지하기 위한 에어필터입니다.
@@ -640,7 +640,7 @@ INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, funct
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('파워 아웃렛(1열 1개, 2열 1개, 3열 1개)', '시동이 걸린 상태에서 실내에서 전기 제품(예 : 진공청소기, 소형냉장고, 게임기 등)을 사용할 수 있도록 돕습니다.', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/83.jpg', null, 'FALSE', 7, null);
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('세이프티 파워 윈도우(1/2열)', '유리창이 원터치 자동 닫힘 기능이 작동하여 닫히는 중에 일정한 힘에 의해 막히면 자동으로 닫힘을 멈추고, 일정한 높이만큼 다시 열리는 기능입니다.', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/84.jpg', null, 'FALSE', 7, null);
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('후방 모니터', '후진 주차 시 디스플레이 오디오 또는 내비게이션 화면에 후방 상황을 표시하여 편의성을 높였습니다.
-- 조향연동 기능 : 스티어링 휠 조정 시 그에 따른 예상 주행 궤적도 같이 표시하여 편의성을 높였습니다. 
+- 조향연동 기능 : 스티어링 휠 조정 시 그에 따른 예상 주행 궤적도 같이 표시하여 편의성을 높였습니다.
 - DRM(Driving Rear Monitor) 기능 : 주행 중 후방 영상을 실시간으로 확인하여 룸미러 시야 확보가 불가능 할 때, 후방 상황을 인지할 수 있습니다.', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/85.jpg', null, 'FALSE', 7, null);
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('확산형 루프 에어 벤트', '벤트 테두리에 홀(HOLE)을 적용하여 바람이 직접 분사가 아닌 간접(확산) 분사될 수 있도록 구현하여 조금 더 쾌적한 환경을 제공합니다.', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/86.jpg', null, 'FALSE', 7, null);
 INSERT INTO FUNCTIONS ( name, description, img_url, option_id, is_my_trim, function_category_id, wheel_logo_img_url) VALUES ('오토라이트 컨트롤', '대시보드 중앙에 위치한 조도센서를 이용하여 외부 밝기에 따라 헤드램프를 자동으로 조절하는 장치입니다. 스티어링 휠 좌측에 위치한 조명 스위치를 「AUTO」 위치에 두면 작동합니다.
