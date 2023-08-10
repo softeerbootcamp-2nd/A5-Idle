@@ -227,4 +227,3 @@ create table if not exists  OPTION_STATUS
     constraint FK_OPTION_TO_OPTION_STATUS_2
         foreign key (not_activated_option_id) references `OPTION` (option_id)
 );
-
