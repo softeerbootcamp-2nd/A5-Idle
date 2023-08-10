@@ -18,8 +18,8 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
-         java-version: 11
-         distribution: 'temurin'
+          java-version: 11
+          distribution: 'temurin'
       
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -28,9 +28,9 @@ jobs:
       - name: Test with Gradle
         run: ./gradlew test
         working-directory: ./backend
-
-      - name: Jacaca Test Converage Report
-	id: jacoco
+	
+      - name: Comment test coverage
+        id: jacoco
         uses: madrapps/jacoco-report@v1.2
         with:
           title: 📝 Test Coverage Report
@@ -38,7 +38,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 70
           min-coverage-changed-files: 50
-        
+	  
   deploy:
     if: ${{github.event_name == 'push'}}
     runs-on: ubuntu-latest
@@ -48,18 +48,18 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
-         java-version: 11
-         distribution: 'temurin'
+          java-version: 11
+          distribution: 'temurin'
 
       - name: Set Yaml
         uses: microsoft/variable-substitution@v1
- 	with:
-         files: ./backend/src/main/resources/application.yml
-	env:
-   	 spring.datasource.url: ${{ secrets.EC2_MYSQL_URL }} 
-   	 spring.datasource.username: ${{ secrets.EC2_MYSQL_USERNAME }} 
-   	 spring.datasource.password: ${{ secrets.EC2_MYSQL_PASSWORD }}
-      
+        with:
+          files: ./backend/src/main/resources/application.yml
+        env:
+          spring.datasource.url: ${{ secrets.EC2_MYSQL_URL }} 
+          spring.datasource.username: ${{ secrets.EC2_MYSQL_USERNAME }} 
+          spring.datasource.password: ${{ secrets.EC2_MYSQL_PASSWORD }}
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
         working-directory: ./backend
@@ -79,7 +79,7 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/Idle:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/idle:latest
       
       - name: Build and Deploy to EC2
         uses: appleboy/ssh-action@master
@@ -91,20 +91,11 @@ jobs:
           script: |
             sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
             sudo docker rm -f idle_1
-            sudo docker rmi -f ${{ secrets.DOCKER_USERNAME }}/Idle:latest
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/Idle:latest
+            sudo docker rmi -f ${{ secrets.DOCKER_USERNAME }}/idle:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/idle:latest
             sudo docker run --name=idle_1 \
             --restart unless-stopped \
             -p 8080:8080 \
             -e TZ=Asia/Seoul \
             -d \
             ${{ secrets.DOCKER_USERNAME }}/Idle:latest
-            
-          
-            
-            
-          
-            
-          
-    
-  
