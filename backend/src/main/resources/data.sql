@@ -525,6 +525,7 @@ INSERT INTO INTERIOR_COLOR (color, price, interior_img_url, color_img_url, purch
 INSERT INTO INTERIOR_COLOR (color, price, interior_img_url, color_img_url, purchase_rate, trim_exterior_color_id) VALUES ('쿨그레이', 0, 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/18-2.png', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/18-1.png', '구매자 3%가 선택', 18);
 INSERT INTO INTERIOR_COLOR (color, price, interior_img_url, color_img_url, purchase_rate, trim_exterior_color_id) VALUES ('쿨그레이', 0, 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/18-2.png', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/18-1.png', '구매자 3%가 선택', 19);
 
+<<<<<<< HEAD
 INSERT INTO ENGINE (type, img_url, price, peak_output, max_torque, min_fuel, max_fuel, purchase_rate, description) VALUES ('디젤 2.2', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/5.jpg', 1480000, 202, 45, 11.4, 12.4, '구매자 45%가 선택', '강력한 토크와 탁월한 효율로 여유있는 파워와 높은 연비를 제공하는 디젤 엔진입니다.');
 INSERT INTO ENGINE (type, img_url, price, peak_output, max_torque, min_fuel, max_fuel, purchase_rate, description) VALUES ('가솔린 3.8', 'https://a5idle.s3.ap-northeast-2.amazonaws.com/mycarimages/6.jpg', 0, 295, 36.2, 8, 9.2, '구매자 55%가 선택', '고효율의 3.8 가솔린 엔진으로 다이내믹한 주행 성능은 물론, 정속성까지 선사합니다.');
 
