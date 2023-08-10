@@ -1,10 +1,8 @@
 package com.autoever.idle.domain.detailModel.drivingMethod;
 
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@Builder
 public class DrivingMethodResDto {
     private Long id;
     private String type;
