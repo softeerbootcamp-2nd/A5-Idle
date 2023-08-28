@@ -31,7 +31,7 @@ const StContainer = styled.div`
   z-index: 1;
   &:hover {
     cursor: pointer;
-    filter: brightness(120%);
+    filter: brightness(1%);
   }
 
   &:active {

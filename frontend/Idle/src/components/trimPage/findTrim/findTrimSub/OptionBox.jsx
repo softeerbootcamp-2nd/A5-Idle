@@ -122,5 +122,6 @@ const StBtn = styled.button`
   letter-spacing: -0.36px;
   &:hover {
     cursor: pointer;
+    text-decoration: underline;
   }
 `;

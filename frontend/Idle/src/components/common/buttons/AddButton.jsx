@@ -41,7 +41,7 @@ const StContainer = styled.div`
   z-index: 1;
   &:hover {
     cursor: pointer;
-    filter: brightness(120%);
+    filter: brightness(150%);
   }
   &:active {
     box-shadow: inset 1px 1px 4px #898989;

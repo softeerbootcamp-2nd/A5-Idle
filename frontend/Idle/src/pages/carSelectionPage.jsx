@@ -186,4 +186,7 @@ const StBtn = styled.div`
 
   border-radius: 2px;
   box-shadow: 1px 1px 1px #b7b7b7;
+  &:hover {
+    filter: brightness(1.5);
+  }
 `;

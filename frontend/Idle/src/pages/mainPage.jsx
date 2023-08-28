@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import hyundaiVideo from "../assets/images/palisadeVideo.mp4";
 import MainLogoWhite from "../components/common/logos/MainLogoWhite";
 import { useNavigate } from "react-router-dom";
-import { setClickedOptionPage } from "../constant/constants"
+import { setClickedOptionPage } from "../constant/constants";
 
 function MainPage() {
   const navigate = useNavigate();
@@ -51,6 +51,7 @@ const StVideo = styled.video`
 `;
 
 const StLogo = styled.div`
+  cursor: pointer;
   z-index: 1;
   position: absolute;
   top: 32px;

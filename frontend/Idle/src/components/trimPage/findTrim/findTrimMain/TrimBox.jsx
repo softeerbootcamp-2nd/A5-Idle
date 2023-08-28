@@ -2,10 +2,15 @@ import styled from "styled-components";
 import TrimBoxOptionStatus from "./TrimBoxOptionStatus";
 import { useContext } from "react";
 import { dispatchContext, stateContext } from "../../../../store/context";
-import { PUSH_DISABLE_FUNCTION_ID, SET_DISABLE_FUNCTION_ID, SET_TEMPCAR } from "../../../../store/actionType";
+import {
+  PUSH_DISABLE_FUNCTION_ID,
+  SET_DISABLE_FUNCTION_ID,
+  SET_TEMPCAR,
+} from "../../../../store/actionType";
 import { getWithQueryAPI } from "../../../../utils/api";
 import { PATH } from "../../../../constant/path";
 import palette from "../../../../styles/palette";
+import { NONE } from "../../../../constant/constants";
 
 function TrimBox({
   name,
@@ -22,29 +27,28 @@ function TrimBox({
   const { state } = useContext(stateContext);
   const { stateDispatch } = useContext(dispatchContext);
   function handleClick() {
+    if (!isActive) return;
     stateDispatch({ type: SET_DISABLE_FUNCTION_ID, payload: [] });
     if (isSelected) {
       setSelected(-1);
       return;
     }
-    if (isActive) {
-      const fetchGet = async () => {
-        const result = await getWithQueryAPI(PATH.FIND.TRIM, { trimId: trimId });
-        result.map((item) => {
-          stateDispatch({ type: PUSH_DISABLE_FUNCTION_ID, payload: item.functionId });
-        });
-      };
-      fetchGet();
-      const carData = trimData.find((item) => item.name === name);
-      const payload = state.tempCar;
-      payload.trim = {
-        trimId: trimId,
-        name: carData.name,
-        price: carData.price,
-      };
-      stateDispatch({ type: SET_TEMPCAR, payload: payload });
-      onClick();
-    }
+    const fetchGet = async () => {
+      const result = await getWithQueryAPI(PATH.FIND.TRIM, { trimId: trimId });
+      result.map((item) => {
+        stateDispatch({ type: PUSH_DISABLE_FUNCTION_ID, payload: item.functionId });
+      });
+    };
+    fetchGet();
+    const carData = trimData.find((item) => item.name === name);
+    const payload = state.tempCar;
+    payload.trim = {
+      trimId: trimId,
+      name: carData.name,
+      price: carData.price,
+    };
+    stateDispatch({ type: SET_TEMPCAR, payload: payload });
+    onClick();
   }
   return (
     <StFindTrimTrimContainer $isactive={isActive.toString()} $isselected={isSelected}>
@@ -70,19 +74,19 @@ const StFindTrimTrimContainer = styled.div`
   border: 1px solid ${palette.Grey_2};
   background: ${({ $isselected, $isactive }) =>
     $isselected ? palette.NavyBlue_5 : $isactive === "true" ? palette.White : palette.Grey_4};
-  ${({ $isactive }) => $isactive === "true" && `cursor: pointer`};
   opacity: ${({ $isactive }) => ($isactive === "true" ? 1 : 0.5)};
   margin-bottom: 12px;
-
+  cursor: ${({ $isactive }) => ($isactive === "true" ? "pointer" : "default")};
   transition: all 0.2s ease;
-
   &:hover {
-    background-color: ${({ $isselected }) =>
-    $isselected ? `${palette.NavyBlue_5}` : `${palette.NavyBlue_1}`};
-    opacity: 0.9;
-    cursor: pointer;
-    box-shadow: 2px 2px 10px #898989;
+    ${({ $isactive, $isselected }) =>
+      `
+    background-color: ${$isactive && $isselected ? palette.NavyBlue_5 : NONE};
+    opacity: ${$isactive ? 0.9 : NONE};
+    box-shadow: ${$isactive ? "2px 2px 10px #898989" : NONE};
+  `}
   }
+
   &:active {
     box-shadow: inset 1px 1px 4px #898989;
   }

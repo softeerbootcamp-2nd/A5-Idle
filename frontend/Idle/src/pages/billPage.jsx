@@ -149,6 +149,12 @@ const StContainer = styled.div`
   overflow: hidden;
   justify-content: center;
   align-items: center;
+  @media print {
+    & * {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 `;
 const BlueBG = styled.div`
   width: 1280px;

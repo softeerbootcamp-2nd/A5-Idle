@@ -4,9 +4,13 @@ import { useContext, useEffect, useState } from "react";
 import { dispatchContext, stateContext } from "../../../../store/context";
 import { getWithoutQueryAPI } from "../../../../utils/api";
 import { PATH } from "../../../../constant/path";
-import { PUSH_FUNCTION_LIST, SET_CLICK_ACTIVE, SET_OPTION_STATUS } from "../../../../store/actionType";
+import {
+  PUSH_FUNCTION_LIST,
+  SET_CLICK_ACTIVE,
+  SET_OPTION_STATUS,
+} from "../../../../store/actionType";
 import { defaultOption } from "../../../../constant/constants";
-import OptionBoxContainer from "../findTrimSub/OptionBoxContainer"
+import OptionBoxContainer from "../findTrimSub/OptionBoxContainer";
 
 function TrimBoxContainer() {
   const { stateDispatch } = useContext(dispatchContext);
