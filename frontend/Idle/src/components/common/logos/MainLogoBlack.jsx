@@ -3,8 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { ReactComponent as MainLogoImg } from "../../../assets/images/hyundai.svg";
 import { carContext } from "../../../store/context";
-import { emptyCar } from "../../../constant/constants";
-import { CHANGE_ALL } from "../../../store/actionType";
+import { RESET_ALL } from "../../../store/actionType";
 import WarningModal from "../modals/WarningModal";
 import palette from "../../../styles/palette";
 
@@ -23,7 +22,7 @@ function MainLogoBlack({ modalPosition = null }) {
   }
 
   function resetPage() {
-    dispatch({ type: CHANGE_ALL, payload: emptyCar });
+    dispatch({ type: RESET_ALL, payload: null });
     navigate("/");
   }
 
